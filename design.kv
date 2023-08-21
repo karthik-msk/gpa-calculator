@@ -1,0 +1,653 @@
+#:kivy 2.1.0
+WindowManager:
+	MainMenu:
+	Calculate:
+	Diff:
+	Flames:
+	Proj:
+	About:
+
+<MainMenu>:
+	name: "Wel"
+	GridLayout:
+		rows: 3
+		spacing: 10
+
+		Image:
+			size_hint_y: 0.65
+			source: "img2.png"
+			allow_stretch: True
+		GridLayout:
+			cols: 3
+			GridLayout:
+				cols: 1
+				Label:
+			
+			GridLayout:
+				size_hint_x: 4.5
+				size_hint_y: 1.5
+				cols: 1
+				spacing: 5
+
+
+				Button:
+					size_hint_y: 2
+					font_size: "30sp"
+					text: "Calculate GPA"
+					on_press: app.root.current = 'calc'
+					background_color: 0/255, 255/255, 0/255, 1
+				
+				Button:
+					size_hint_y: 1.5
+					text: "Spot the Differences"
+					font_size: "25sp"
+					on_press: app.root.current = 'diff'
+				Button:
+					size_hint_y: 1.5
+					text: "Flames Calculator"
+					font_size: "25sp"
+					on_press: app.root.current = 'flames'
+				Button:
+					size_hint_y: 1.5
+					text: "My Coding Journey"
+					font_size: "25sp"
+					on_press: app.root.current = 'proj'
+
+				Button:
+					size_hint_y: 1.5
+					font_size: "25sp"
+					text: "About"
+					on_press: app.root.current = "about"
+
+
+				Button:
+					size_hint_y: 2
+					font_size: "30sp"
+					text: "Exit"
+					background_color: 255/255, 0/255, 0/255, 1
+					on_release: app.stop()
+			GridLayout:
+				cols: 1
+				Label:
+			
+		GridLayout:
+			rows: 1
+			size_hint_y: 0.25
+			Label:
+				canvas.before:
+					Color:
+						rgba: 18/255, 18/255, 18/255, 1
+					Rectangle:
+						pos: self.pos
+						size: self.size
+
+				text: "NOTE : Calculator works only for IT Department"
+				font_size: self.width/23
+				valign: 'top'
+
+<Calculate>:
+	name: 'calc'
+	GridLayout:
+		rows: 4
+		spacing: 20
+		GridLayout:
+			rows: 1
+			size_hint_y: 0.2
+			Label:
+				canvas.before:
+					Color:
+						rgba: 0/255, 0/255, 0/255, 1
+					Rectangle:
+						pos: self.pos
+						size: self.size
+				text: "GPA Calculator"
+				bold: "True"
+                font_size: self.width/10
+				halign: 'center'
+				valign: 'bottom'
+		GridLayout:
+			size_hint_y: 0.2
+			cols: 2
+			Label:
+				text: "Semester"
+				font_size: self.width/10
+				canvas.before:
+					Color:
+						rgba: 50/255, 50/255, 50/255, 1
+					Rectangle:
+						pos: self.pos
+						size: self.size
+			
+			Spinner:
+				id: cursem
+				text: "select"
+				values: ['1','2','3','4','5','6','7','8']
+				background_color: 160/255, 160/255, 160/255, 1
+				on_text: root.selectsem(cursem.text)
+				font_size: self.width/10
+
+		
+		GridLayout:
+			size_hint_y: 2
+			spacing: 5
+			rows: 10
+            GridLayout:
+                cols: 3
+                Label:
+					text: "  CODE"
+					text_size: self.size
+					valign: "middle"
+					halign: "left"
+					size_hint_x: 0.5
+					font_size: self.width/5
+					color: 0/255, 0/255, 0/255, 1
+					canvas.before:
+						Color:
+							rgba: 200/255, 200/255, 200/255, 1
+						Rectangle:
+							pos: self.pos
+							size: self.size
+                Label:
+					text: "SUBJECT  TITLE"
+					font_size: self.width/10
+					color: 0/255, 0/255, 0/255, 1
+					canvas.before:
+						Color:
+							rgba: 200/255, 200/255, 200/255, 1
+						Rectangle:
+							pos: self.pos
+							size: self.size
+                Label:
+					text: "GRADE "
+					text_size: self.size
+					valign: "middle"
+					halign: "right"
+					size_hint_x: 0.5
+					font_size: self.width/5
+					color: 0/255, 0/255, 0/255, 1
+					canvas.before:
+						Color:
+							rgba: 200/255, 200/255, 200/255, 1
+						Rectangle:
+							pos: self.pos
+							size: self.size
+
+            GridLayout:
+                cols: 3
+				size_hint_x: 0.5
+                Label:
+					size_hint_x: 0.3
+					id: cd1
+					text: ""
+					font_size: self.width/5
+					canvas.before:
+						Color:
+							rgba: 50/255, 50/255, 50/255, 1
+						Rectangle:
+							pos: self.pos
+							size: self.size
+                Label:
+					id: tit1
+					halign: "center"
+					color: 0/255, 0/255, 0/255, 1
+					text: ""
+					font_size: "18sp"
+					canvas.before:
+						Color:
+							rgba: 255/255, 255/255, 255/255, 1
+						Rectangle:
+							pos: self.pos
+							size: self.size
+					
+                Spinner:
+					size_hint_x: 0.3
+					id: grd1
+					text: ""
+					background_color: 160/255, 160/255, 160/255, 1
+					values: ['O','A+','A','B+','B','B+','C','U']
+            GridLayout:
+                cols: 3
+                Label:
+					size_hint_x: 0.3
+					id: cd2
+					text: ""
+					font_size: self.width/5
+					canvas.before:
+						Color:
+							rgba: 50/255, 50/255, 50/255, 1
+						Rectangle:
+							pos: self.pos
+							size: self.size
+                Label:
+					id: tit2
+					halign: "center"
+					color: 0/255, 0/255, 0/255, 1
+					text: ""
+					font_size: "18sp"
+					canvas.before:
+						Color:
+							rgba: 255/255, 255/255, 255/255, 1
+						Rectangle:
+							pos: self.pos
+							size: self.size
+					
+                Spinner:
+					size_hint_x: 0.3
+					id: grd2
+					text: ""
+					background_color: 160/255, 160/255, 160/255, 1
+					values: ['O','A+','A','B+','B','B+','C','U']
+            GridLayout:
+                cols: 3
+                Label:
+					size_hint_x: 0.3
+					id: cd3
+					text: ""
+					font_size: self.width/5
+					canvas.before:
+						Color:
+							rgba: 50/255, 50/255, 50/255, 1
+						Rectangle:
+							pos: self.pos
+							size: self.size
+                Label:
+					id: tit3
+					halign: "center"
+					color: 0/255, 0/255, 0/255, 1
+					text: ""
+					font_size: "18sp"
+					canvas.before:
+						Color:
+							rgba: 255/255, 255/255, 255/255, 1
+						Rectangle:
+							pos: self.pos
+							size: self.size
+					
+                Spinner:
+					size_hint_x: 0.3
+					id: grd3
+					text: ""
+					background_color: 160/255, 160/255, 160/255, 1
+					values: ['O','A+','A','B+','B','B+','C','U']
+            GridLayout:
+                cols: 3
+                Label:
+					size_hint_x: 0.3
+					id: cd4
+					text: ""
+					font_size: self.width/5
+					canvas.before:
+						Color:
+							rgba: 50/255, 50/255, 50/255, 1
+						Rectangle:
+							pos: self.pos
+							size: self.size
+                Label:
+					id: tit4
+					halign: "center"
+					color: 0/255, 0/255, 0/255, 1
+					text: ""
+					font_size: "18sp"
+					canvas.before:
+						Color:
+							rgba: 255/255, 255/255, 255/255, 1
+						Rectangle:
+							pos: self.pos
+							size: self.size
+					
+                Spinner:
+					size_hint_x: 0.3
+					id: grd4
+					text: ""
+					background_color: 160/255, 160/255, 160/255, 1
+					values: ['O','A+','A','B+','B','B+','C','U']
+            GridLayout:
+                cols: 3
+                Label:
+					size_hint_x: 0.3
+					id: cd5
+					text: ""
+					font_size: self.width/5
+					canvas.before:
+						Color:
+							rgba: 50/255, 50/255, 50/255, 1
+						Rectangle:
+							pos: self.pos
+							size: self.size
+                Label:
+					id: tit5
+					halign: "center"
+					color: 0/255, 0/255, 0/255, 1
+					text: ""
+					font_size: "18sp"
+					canvas.before:
+						Color:
+							rgba: 255/255, 255/255, 255/255, 1
+						Rectangle:
+							pos: self.pos
+							size: self.size
+					
+                Spinner:
+					size_hint_x: 0.3
+					id: grd5
+					text: ""
+					background_color: 160/255, 160/255, 160/255, 1
+					values: ['O','A+','A','B+','B','B+','C','U']
+            GridLayout:
+                cols: 3
+                Label:
+					size_hint_x: 0.3
+					id: cd6
+					text: ""
+					font_size: self.width/5
+					canvas.before:
+						Color:
+							rgba: 50/255, 50/255, 50/255, 1
+						Rectangle:
+							pos: self.pos
+							size: self.size
+                Label:
+					id: tit6
+					halign: "center"
+					color: 0/255, 0/255, 0/255, 1
+					text: ""
+					font_size: "18sp"
+					canvas.before:
+						Color:
+							rgba: 255/255, 255/255, 255/255, 1
+						Rectangle:
+							pos: self.pos
+							size: self.size
+					
+                Spinner:
+					size_hint_x: 0.3
+					id: grd6
+					text: ""
+					background_color: 160/255, 160/255, 160/255, 1
+					values: ['O','A+','A','B+','B','B+','C','U']
+            GridLayout:
+                cols: 3
+                Label:
+					size_hint_x: 0.3
+					id: cd7
+					text: ""
+					font_size: self.width/5
+					canvas.before:
+						Color:
+							rgba: 50/255, 50/255, 50/255, 1
+						Rectangle:
+							pos: self.pos
+							size: self.size
+                Label:
+					id: tit7
+					halign: "center"
+					color: 0/255, 0/255, 0/255, 1
+					text: ""
+					font_size: "18sp"
+					canvas.before:
+						Color:
+							rgba: 255/255, 255/255, 255/255, 1
+						Rectangle:
+							pos: self.pos
+							size: self.size
+					
+                Spinner:
+					size_hint_x: 0.3
+					id: grd7
+					text: ""
+					background_color: 160/255, 160/255, 160/255, 1
+					values: ['O','A+','A','B+','B','B+','C','U']
+            
+			GridLayout:
+                cols: 3
+                Label:
+					size_hint_x: 0.3
+					id: cd8
+					text: ""
+					font_size: self.width/5
+					canvas.before:
+						Color:
+							rgba: 50/255, 50/255, 50/255, 1
+						Rectangle:
+							pos: self.pos
+							size: self.size
+                Label:
+					id: tit8
+					halign: "center"
+					color: 0/255, 0/255, 0/255, 1
+					text: ""
+					font_size: "18sp"
+					canvas.before:
+						Color:
+							rgba: 255/255, 255/255, 255/255, 1
+						Rectangle:
+							pos: self.pos
+							size: self.size
+					
+                Spinner:
+					size_hint_x: 0.3
+					id: grd8
+					text: ""
+					background_color: 160/255, 160/255, 160/255, 1
+					values: ['O','A+','A','B+','B','B+','C','U']
+            
+			GridLayout:
+                cols: 3
+                Label:
+					size_hint_x: 0.3
+					id: cd9
+					text: ""
+					font_size: self.width/5
+					canvas.before:
+						Color:
+							rgba: 50/255, 50/255, 50/255, 1
+						Rectangle:
+							pos: self.pos
+							size: self.size
+                Label:
+					id: tit9
+					halign: "center"
+					color: 0/255, 0/255, 0/255, 1
+					text: ""
+					font_size: "14sp"
+					canvas.before:
+						Color:
+							rgba: 255/255, 255/255, 255/255, 1
+						Rectangle:
+							pos: self.pos
+							size: self.size
+					
+                Spinner:
+					size_hint_x: 0.3
+					id: grd9
+					text: ""
+					background_color: 160/255, 160/255, 160/255, 1
+					values: ['O','A+','A','B+','B','B+','C','U']
+			
+		GridLayout:
+			rows: 3
+			Button:
+				size_hint: 0.5, 1.0
+				text: "Calculate"
+				on_press: root.gpa(cursem.text)
+				background_color: 0/255, 255/255, 0/255, 1
+				font_size: "35sp"
+			
+			Label:	
+                text: 'GPA = '+root.res
+				font_size: self.width/10
+                color: 0,1,0,1
+                valign: 'middle'
+			GridLayout:
+				cols:2
+				Button:
+					text: "Reset"
+					background_color: 255/255, 165/255, 0/255, 1
+					font_size: "30sp"
+					on_press: root.reset()
+				Button:
+					text: "Back"
+					font_size: "30sp"
+					on_press: app.root.current='Wel'
+
+<About>:
+	name: 'about'
+	GridLayout:
+		rows: 5
+		Label:
+			size_hint_y: 0.1
+			padding_x: 10
+			text: "About Developer"
+			font_size: self.width/15
+			bold: True
+			text_size: self.size
+			halign: "center"
+			valign: "middle"
+		Image:
+			size_hint_y: 0.4
+			source: "dev_img2.png"
+			allow_stretch: True
+		Label:
+			padding_x: 27
+			padding_y: 10
+			text_size: self.size
+			font_size: self.height/33
+			valign: "top"
+			text: "First of all THANK YOU !!! for trying my application and it gives me great pleasure that you are here. I'm Karthikeyan_M_S, currently studying 2nd year B.Tech IT (Orange tag) in CEG. \n\nI wanted to create this app in the shortest time possible so instead of learning Java/Kotlin, I used python's Kivy module to create this app. As of now, Only IT department students of 'Regulation 2019' can calculate their gpa here. \n\nFEATURES  :  \n    - No ads\n    - No permissions required\n    - Some fun elements included\n\nPRO TIP : Kivy module is NOT optimum for app development. If you are seriuosly into App Development then learn Java/Kotlin. For simple apps and hobbyists, you can give kivy a try.\n\nFor any other queries, feedback or just a casual talk, contact me @\n\n    -  Mobile : +91 9345534207\n    -  Instagram : karthik._.msk"
+		Button:
+			size_hint_y: 0.1
+			text: "Back"
+			on_press: app.root.current='Wel'
+
+<Diff>:
+	name: 'diff'
+	on_pre_enter: self.instruction()
+	GridLayout:
+		cols: 1
+		spacing: 10
+		Label:
+			size_hint_y: 0.5
+			padding_x: 10
+			text: "Spot the Differences"
+			font_size: self.width/15
+			bold: True
+			text_size: self.size
+			halign: "center"
+			valign: "middle"
+		Image:
+			id: dim1
+			size_hint_y: 2
+			source: ""
+			allow_stretch: True
+			width: self.width
+		Image:
+			id: dim2
+			size_hint_y: 2
+			source: ""
+			allow_stretch: True
+		GridLayout:
+			rows: 1
+			size_hint_y: 0.5
+			Button:
+				id: hinbut
+				text: "Show hint"
+				disabled: True
+				on_press: root.showhint()
+			GridLayout:
+				cols: 1
+				Label:
+					size_hint_y: 0.7
+					text: "Timer (in Sec)"
+				Label:
+					id: timer
+					text: "0"
+					font_size: self.width/8
+			Button:
+				id: ansbut
+				text: "Show answer"
+				disabled: True
+				on_press: root.showans()
+		Button:
+			size_hint_y: 0.5
+			text:"Back"
+			on_press: app.root.current='Wel'
+			on_release: root.exit()
+
+<Flames>:
+	name: "flames"
+	GridLayout:
+		cols: 1
+		spacing: 10
+		Label:
+			size_hint_y: 0.5
+			padding_x: 10
+			text: "FLAMES CALCULATOR"
+			font_size: self.width/15
+			bold: True
+			text_size: self.size
+			halign: "center"
+			valign: "middle"
+		GridLayout:
+			cols:3
+			size_hint_y: 2
+			Label:
+				size_hint_x: 0.2
+			GridLayout:
+				cols: 1
+				Label:
+					font_size: self.width/10
+					text: "Enter your name : "
+				TextInput:
+					id: name1
+					font_size: "20sp"
+					size_hint_y: 0.5
+				Label:
+					font_size: self.width/10
+					text: "Enter his/her name: "
+				TextInput:
+					id: name2
+					font_size: "20sp"
+					size_hint_y: 0.5
+			Label:
+				size_hint_x: 0.2
+		Label:
+		Button:
+			font_size: "30sp"
+			text: "Calculate"
+			background_color: 0/255, 255/255, 0/255, 1
+			on_press: root.flini(name1.text,name2.text)
+		Label:	
+			id: resf
+			text: 'RESULT = '
+			font_size: self.width/10
+			color: 0,1,0,1
+			valign: 'middle'
+		Button:
+			size_hint_y: 0.5
+			text:"Back"
+			on_press: app.root.current='Wel'
+
+<Proj>:
+	name: "proj"
+	GridLayout:
+		cols: 1
+		Label:
+			size_hint_y: 0.1
+			padding_x: 10
+			text: "My Coding Journey"
+			font_size: self.width/15
+			bold: True
+			text_size: self.size
+			halign: "center"
+			valign: "middle"
+		Label:
+			padding_x: 27
+			padding_y: 10
+			text_size: self.size
+			font_size: self.height/38
+			valign: "top"
+			text: "I came to know about programming in 11th std (CS group but my school focussed only on JEE preparation) and I learned PYTHON as my first programming language. At that time, i had a only little interest in programming becuase it was very new to me. I was able to do the basic problems given by my teacher and thats it.\n\nThen came the lockdown and online classes and I started to get away from my studies and school stuff. Then my school gave us a group project in Python but I had to do it single handedly because my group was busy in JEE preparation and I had no interest in JEE. I successfully completed the project on my own and that was the moment when I realised that 'PROGRAMMING IS THE RIGHT CHOICE FOR ME !!'. It was the first time in my life that i was good at something.\n\n After the project i was done with Python and came back to JEE preparation and i had zero interest in it. My JEE score went down, also some Heartbreaks happened... i wasn't able to do anything in my studies. So once again, I came back to Python but this time, more seriously. I consistently learned and practiced new concepts from youtube.\n\nMy boards score was somewhat good.. with that, I got B.Tech IT in CEG and here I am.. with you guys <3\n"
+		Button:
+			size_hint_y: 0.1
+			text: "Back"
+			on_press: app.root.current='Wel'
